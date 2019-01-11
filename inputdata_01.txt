@@ -1,0 +1,63 @@
+# Lexical error!
+# $ is an unknown character.
+# Result is 12 as the $ is reported but ignored.
+6 + $ 4 + 2
+
+# + and - are the same precedence.
+# Result should be 5, not -1.
+6-4+3
+
+# - is left associative.
+# Result should be -1, not 5.
+6-4-3
+
+# * and / are the same precedence.
+# Result should be 8, not 2.
+16/4*2
+
+# / is left associative.
+# Result should be 2, not 8.
+16/4/2
+
+# * is higher precedence than +.
+# Result should be 18, not 30.
+6+4*3
+
+# / is higher precedence than -.
+# Result should be 14, not 6.
+16-4/2
+
+# Unary - is higher precedence than +.
+# Result should be -4, not -8.
+-6+2
+
+# Unary - is higher precedence than *.
+# Result should be -12, not an error.
+6*-2
+
+# Unary - is right associative.
+# Result should be 1, not an error.
+--1
+
+# Parentheses override precedence.
+# Result should be 30, not 18.
+(6+4)*3
+
+# Name test.
+# Result should be 120.
+a = 5 * 4 * 3 * 2 * 1
+a
+
+# Name error.
+# Result is an error message, then 0.
+b
+
+# Parse error.
+# Result is an error message because there should
+# have been another token after the +.
+1 +
+
+# Parse error.
+# Result is an error message because two consecutive
+# binary operators is not allowed by the grammar.
+8 * / 2
